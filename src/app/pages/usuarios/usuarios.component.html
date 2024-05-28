@@ -1,0 +1,16 @@
+<div class="card-container">
+  <mat-card *ngFor="let usuario of listUsuarios" class="example-card">
+    <mat-card-header>
+      <mat-card-subtitle>{{ usuario.rol }}</mat-card-subtitle>
+      <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ usuario.correo }}</p>
+      <!-- Puedes agregar más detalles aquí -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
