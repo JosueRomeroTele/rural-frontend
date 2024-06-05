@@ -1,11 +1,11 @@
 <div class="card-container">
   <mat-card *ngFor="let usuario of listUsuarios" class="example-card">
     <mat-card-header>
-      <mat-card-subtitle>{{ usuario.rol }}</mat-card-subtitle>
-      <mat-card-title>{{ usuario.nombre }}</mat-card-title>
+      <mat-card-subtitle>{{ getRoleName(usuario.role) }}</mat-card-subtitle>
+      <mat-card-title>{{ usuario.name }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <p>{{ usuario.correo }}</p>
+      <p>{{ usuario.email }}</p>
       <!-- Puedes agregar más detalles aquí -->
     </mat-card-content>
     <mat-card-actions>

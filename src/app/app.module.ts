@@ -2,6 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
+
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './layouts/toolbar/toolbar.component';
@@ -17,6 +25,15 @@ import {MatTreeModule} from '@angular/material/tree';
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+import { AuthenticationService } from './services/security/authentication.service';
+import { AuthApiService } from './services/security/auth-api.service';
+import { ModalMensajeComponent } from './componenents/modal-mensaje/modal-mensaje.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +41,10 @@ import {MatCardModule} from '@angular/material/card';
     SidebarComponent,
     HomeComponent,
     UsuariosComponent,
-    PagesComponent
+    PagesComponent,
+    LoginComponent,
+    RegisterComponent,
+    ModalMensajeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,9 +57,19 @@ import {MatCardModule} from '@angular/material/card';
     MatTreeModule,
     MatListModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    AuthApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

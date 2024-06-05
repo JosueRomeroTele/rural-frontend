@@ -1,0 +1,40 @@
+<div class="h-100" fxLaoyut="row">
+  <div fxFlex="100" class="left-container">
+    <form
+      [formGroup]="formulario"
+      (ngSubmit)="login()"
+      autocomplete="off"
+      class="form-container"
+      fxLayoutAlign="center center"
+    >
+      <mat-card class="text-center">
+        <mat-card-title> LOGIN </mat-card-title>
+        <div class="mb-4 mb-md-5 text-center">
+          <a class="d-block auth-logo">
+            <img src="assets/img/logo-pucp.jpeg" alt="" height="60px" />
+          </a>
+          <mat-card-content
+            fxLayout="column"
+            fxLayoutAlign="end center"
+            class="flex-p"
+          >
+            <span style="margin: 1rem 0">subtitulo de prueba</span>
+            <mat-form-field>
+              <mat-label>Usuario</mat-label>
+              <input matInput />
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Contraseña</mat-label>
+              <!-- <input matInput placeholder="Ex. Pizza" > -->
+              <input matInput >
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" type="submit">Login</button>
+
+          </mat-card-content>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>
