@@ -1,0 +1,7 @@
+<button mat-raised-button class="p-1" fxLayout="row" fxLayoutAlign="center center" type="button" disabled
+    *ngIf="loading">
+    <mat-spinner [diameter]="21"></mat-spinner>
+</button>
+<button mat-raised-button [color]="color" [type]="type" *ngIf="!loading" [disabled]="disabled">
+    {{text}}
+</button>

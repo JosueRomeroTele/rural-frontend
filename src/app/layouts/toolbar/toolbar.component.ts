@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  constructor
+  (private authService: AuthenticationService,private router:Router){}
+
+  cerrarSesion(){
+    console.log('ciera o no')
+    this.authService.borrarCredenciales()
+    this.router.navigate(['/login'])
+  }
 }

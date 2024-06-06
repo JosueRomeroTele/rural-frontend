@@ -2,11 +2,24 @@
   <mat-toolbar-row>
     <span>PUCP</span>
     <span class="example-spacer"></span>
-    <button
+    <button [matMenuTriggerFor]="menu"
       mat-icon-button
       class="example-icon"
       aria-label="Example icon-button with menu icon"
     >
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item (click)="cerrarSesion()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+
+    </mat-menu>
+
       <mat-icon>menu</mat-icon>
     </button>
   </mat-toolbar-row>

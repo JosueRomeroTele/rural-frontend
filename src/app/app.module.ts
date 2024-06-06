@@ -26,6 +26,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 import { HttpClientModule } from '@angular/common/http';
@@ -33,7 +35,8 @@ import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 import { AuthenticationService } from './services/security/authentication.service';
 import { AuthApiService } from './services/security/auth-api.service';
-import { ModalMensajeComponent } from './componenents/modal-mensaje/modal-mensaje.component';
+import { ModalMensajeComponent } from './components/modal-mensaje/modal-mensaje.component';
+import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,8 @@ import { ModalMensajeComponent } from './componenents/modal-mensaje/modal-mensaj
     PagesComponent,
     LoginComponent,
     RegisterComponent,
-    ModalMensajeComponent
+    ModalMensajeComponent,
+    LoadingButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ import { ModalMensajeComponent } from './componenents/modal-mensaje/modal-mensaj
     FlexLayoutModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   providers: [
     AuthenticationService,

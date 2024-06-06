@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { last } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { distinct, finalize, last } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/dto/IUsuarioDto';
 import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
@@ -12,18 +13,25 @@ import { AuthenticationService } from 'src/app/services/security/authentication.
 export class LoginComponent {
 
   public formulario = new FormGroup({
-    dni: new FormControl(),
-    name: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
+    dni: new FormControl('',Validators.required),
+    password: new FormControl('', Validators.required),
   })
-
-  constructor(){}
+  loading:boolean = false;
+  constructor(private loginService:AuthenticationService,private router: Router){}
 
 
   login(){
-    // this.loginService.login()
+    console.log(this.formulario.value)
+    this.loading=true;
+    this.loginService.login(this.formulario.value).pipe(
+      finalize(()=>this.loading=false)
+    ).subscribe(result =>{
+      if(result.success){
+        const dni = this.formulario.value.dni
+        this.loginService.cargarCredenciales(result,dni==undefined?'':dni)
+        this.router.navigate(['/'])
+      }
+    })
     console.log('entra')
   }
 

@@ -21,17 +21,24 @@
             <span style="margin: 1rem 0">subtitulo de prueba</span>
             <mat-form-field>
               <mat-label>Usuario</mat-label>
-              <input matInput />
+              <input matInput formControlName="dni" required/>
+              <mat-error *ngIf="formulario.get('dni')?.invalid" >Campo requerido</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Contraseña</mat-label>
               <!-- <input matInput placeholder="Ex. Pizza" > -->
-              <input matInput >
+              <input matInput formControlName="password" required>
+              <mat-error *ngIf="formulario.get('password')?.invalid" >Campo requerido</mat-error>
             </mat-form-field>
 
-            <button mat-raised-button color="primary" type="submit">Login</button>
-
+            <!-- <button mat-raised-button color="primary" type="submit">Login</button> -->
+            <loading-btn [loading]="loading"  text="Iniciar sesión"></loading-btn>
+            <div class="p-1">
+              <a routerLink="/register"  color="primary" >
+                 Registrarse
+              </a>
+          </div>
           </mat-card-content>
         </div>
       </mat-card>
