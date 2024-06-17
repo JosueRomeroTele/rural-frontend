@@ -10,21 +10,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsuariosComponent {
 
-  listUsuarios: Usuario[] = [
-    { dni: '12323', name: "josue", email: "josue.romer@pucp.edu.pe", role: 3 },
-    { dni: '1112', name: "romero", email: "josue.romer@pucp.edu.pe", role: 2 },
-    { dni: '1344555', name: "villava", email: "josue.romer@pucp.edu.pe", role: 1 }
-  ]
+  listUsuarios: Usuario[];
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
-
+  usuarioSesion: String|null;
   constructor(private _userService: UserService) {
-
+    this.listUsuarios =[]
+    this.usuarioSesion = sessionStorage.getItem('id')
   }
 
   ngOnInit() {
-    // this.getListUsuarios();
+    console.log(this.usuarioSesion)
+    this._userService.listUser().subscribe(
+      result=>{
+        this.listUsuarios=result.data.filter((user:any)=>user.dni!==this.usuarioSesion)
+      }
+    );
   }
 
   getRoleName(role: number): string {
@@ -37,9 +39,4 @@ export class UsuariosComponent {
     return roleMap[role] || "SIN ROL";
   };
 
-// getListUsuarios(){
-//   this._userService.getListUsuarios().subscribe((data) => {
-//     console.log(data)
-//   })
-// }
 }

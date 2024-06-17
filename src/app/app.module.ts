@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 
 
@@ -28,7 +29,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatMenuModule} from '@angular/material/menu';
-
+import { CommonModule } from '@angular/common';
 
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './account/login/login.component';
@@ -37,8 +38,11 @@ import { AuthenticationService } from './services/security/authentication.servic
 import { AuthApiService } from './services/security/auth-api.service';
 import { ModalMensajeComponent } from './components/modal-mensaje/modal-mensaje.component';
 import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
+import { DevicesComponent } from './pages/devices/devices.component';
+import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
 @NgModule({
   declarations: [
+    PagetitleComponent,
     AppComponent,
     ToolbarComponent,
     SidebarComponent,
@@ -48,7 +52,8 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
     LoginComponent,
     RegisterComponent,
     ModalMensajeComponent,
-    LoadingButtonComponent
+    LoadingButtonComponent,
+    DevicesComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +75,9 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
     MatInputModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    MatMenuModule
+    MatMenuModule,
+    CommonModule,
+    NgxChartsModule
   ],
   providers: [
     AuthenticationService,

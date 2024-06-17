@@ -16,6 +16,5 @@ mat-grid-tile {
 }
 
 .example-card {
-  width: calc(25% - 20px); /* Ancho máximo de cada tarjeta (20% - 20px de margen) */
   margin-bottom: 20px;
 }

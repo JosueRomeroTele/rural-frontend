@@ -1,16 +1,15 @@
-<div class="h-100" fxLaoyut="row">
-  <div fxFlex="100" class="left-container">
-    <form
+  <div class="container login-container" fxLayout="row" fxLayoutAlign="center center" >
+    <form fxFlex="30%" fxFlex.sm="30%" fxFlex.xs="90%"
       [formGroup]="formulario"
       (ngSubmit)="login()"
       autocomplete="off"
       class="form-container"
       fxLayoutAlign="center center"
     >
-      <mat-card class="text-center">
-        <mat-card-title> LOGIN </mat-card-title>
-        <div class="mb-4 mb-md-5 text-center">
-          <a class="d-block auth-logo">
+      <mat-card class="full-width" fxLayout="column" fxLayoutAlign="center center" >
+        <mat-card-title fxFlex="center"> LOGIN </mat-card-title>
+        <div fxFlex="80">
+          <a fxLayoutAlign="center center" >
             <img src="assets/img/logo-pucp.jpeg" alt="" height="60px" />
           </a>
           <mat-card-content
@@ -18,30 +17,30 @@
             fxLayoutAlign="end center"
             class="flex-p"
           >
-            <span style="margin: 1rem 0">subtitulo de prueba</span>
-            <mat-form-field>
+            <mat-form-field >
               <mat-label>Usuario</mat-label>
               <input matInput formControlName="dni" required/>
+              <mat-icon matSuffix></mat-icon>
               <mat-error *ngIf="formulario.get('dni')?.invalid" >Campo requerido</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <mat-label>Contraseña</mat-label>
-              <!-- <input matInput placeholder="Ex. Pizza" > -->
-              <input matInput formControlName="password" required>
+              <!-- <input matInput formControlName="password" required> -->
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               <mat-error *ngIf="formulario.get('password')?.invalid" >Campo requerido</mat-error>
             </mat-form-field>
-
+            <div *ngIf="errorMsg" style="color: red;"> {{mensajeError}} </div>
             <!-- <button mat-raised-button color="primary" type="submit">Login</button> -->
-            <loading-btn [loading]="loading"  text="Iniciar sesión"></loading-btn>
-            <div class="p-1">
-              <a routerLink="/register"  color="primary" >
+            <loading-btn [loading]="loading"  [disabled]="!formulario.valid" text="Iniciar sesión"></loading-btn>
+            <div class="p-1" style="margin-top:1rem">
+              <button mat-button routerLink="/register"  color="primary" >
                  Registrarse
-              </a>
+              </button>
           </div>
           </mat-card-content>
         </div>
       </mat-card>
     </form>
   </div>
-</div>

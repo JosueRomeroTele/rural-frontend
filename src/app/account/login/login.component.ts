@@ -13,41 +13,56 @@ import { AuthenticationService } from 'src/app/services/security/authentication.
 export class LoginComponent {
 
   public formulario = new FormGroup({
-    dni: new FormControl('',Validators.required),
+    dni: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   })
-  loading:boolean = false;
-  constructor(private loginService:AuthenticationService,private router: Router){}
+  loading: boolean = false;
+  disableBtn: boolean = true;
+  errorMsg: boolean = false;
+  mensajeError: string = '';
+  hide = true;
+  constructor(private loginService: AuthenticationService, private router: Router) { }
 
 
-  login(){
+  login() {
     console.log(this.formulario.value)
-    this.loading=true;
+    sessionStorage.setItem('token','gaaaaaaa')
+    this.router.navigate(['/'])
+    this.loading = true;
     this.loginService.login(this.formulario.value).pipe(
-      finalize(()=>this.loading=false)
-    ).subscribe(result =>{
-      if(result.success){
+      finalize(() => this.loading = false)
+    ).subscribe(result => {
+      // console.log('caso error')
+      console.log('result: ', result)
+      if (result.success) {
         const dni = this.formulario.value.dni
-        this.loginService.cargarCredenciales(result,dni==undefined?'':dni)
+        this.loginService.cargarCredenciales(result, dni == undefined ? '' : dni)
         this.router.navigate(['/'])
+      } else {
+        this.loading = false;
+        // this.disableBtn=true;
+
+        this.errorMsg = true;
+        this.mensajeError=result.msg;
+
+        return
       }
     })
-    console.log('entra')
   }
 
 
 
 
-  bodyRegister(user:Usuario){
+  bodyRegister(user: Usuario) {
     return {
-      tipo:0,// CREAR USUARIO
-      data:{
+      tipo: 0,// CREAR USUARIO
+      data: {
         dni: user.dni,
         name: user.name,
         last: user.lastname,
         email: user.email,
-        password:user.password,
-        role:3
+        password: user.password,
+        role: 3
       }
     }
   }

@@ -5,20 +5,44 @@
   /* border: 1px solid #555; */
 }
 
-.container-fluid{
-  margin: 1rem
+.left-sidenav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: #8388a5;
 }
 
-
-.side-drawer{
-  width: 19vh;
+.example-container {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
 }
 
-.list-item {
+.mat-list-item {
+  display: flex;
+  justify-content: center;
+}
+
+.centered-content {
+  display: flex;
+  align-items: center;
+  text-decoration: none !important;
+}
+
+.centered-content mat-icon {
+  margin-right: 8px;
+}
+
+.centered-content a {
   display: flex;
   align-items: center;
 }
 
-.list-item mat-icon {
-  margin-right: 8px; /* Espacio entre el icono y el texto */
+
+
+.container-fluid{
+  margin: 2rem 3.5rem
 }

@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-// import { environment } from 'src/environments/enviroment';
-import { Usuario } from '../interfaces/dto/IUsuarioDto';
+import { ApiServicesService } from './api-services.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +9,18 @@ import { Usuario } from '../interfaces/dto/IUsuarioDto';
 export class UserService {
 
   // private myUri :string;
-  private myApi: string;
+  private endPoint: string='api/user';
 
-  constructor(private http: HttpClient) {
-    // this.myUri = environment.endpoint;
-    this.myApi = 'api/user/list'
+  constructor(private http: HttpClient,private userService:ApiServicesService) {
    }
 
+   public listUser(){
+    return this.userService.list(this.endPoint+'/list',{
+      headers : new Headers({
+        'Content-Type': 'application/json; charset=utf-8',
+        'auth-type': 'servicio'
+      })
+    })
+   }
 
-  //  getListUsuarios(): Observable<Usuario[]>{
-  //   // return this.http.get<Usuario[]>(this.myUri+this.myApi)
-  //  }
 }

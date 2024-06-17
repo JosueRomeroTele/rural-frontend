@@ -1,80 +1,86 @@
-<div class="w-100" >
-  <div fxFlex="100">
-    <form
-      [formGroup]="formulario"
-      (ngSubmit)="register()"
-      autocomplete="off"
-
-      fxLayoutAlign="center center"
-
-    >
-      <mat-card class="text-center">
-        <mat-card-title> LOGIN </mat-card-title>
-        <div class="mb-4 mb-md-5 text-center">
-          <a class="d-block auth-logo" routerLink="/login">
-            <img src="assets/img/logo-pucp.jpeg" alt="" height="60px" />
-          </a>
-          <mat-card-content
-            fxLayout="column"
-            fxLayoutAlign="end center"
-            class="flex-p"
-          >
+<div
+  class="container login-container"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+>
+  <form
+    [formGroup]="formulario"
+    (ngSubmit)="register()"
+    autocomplete="off"
+    fxLayoutAlign="center center"
+  >
+    <mat-card fxLayout="column" fxLayoutAlign="center center" style="width: 80%;">
+      <mat-card-title fxFlex="center"> Registro </mat-card-title>
+      <div >
+        <a fxLayoutAlign="center center" class="d-block auth-logo" routerLink="/login">
+          <img src="assets/img/logo-pucp.jpeg" alt="" height="60px" />
+        </a>
+        <mat-card-content
+          fxLayout="column"
+          fxLayoutAlign="end center"
+          class="flex-p"
+        >
           <div fxLayout="row wrap" fxLayoutAlign="center center">
-              <div fxFlex="80" fxFlex.sm="50">
-                <span style="margin: 1rem 0">subtitulo de prueba</span>
-              </div>
 
-              <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="10px">
-                <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
-                  <mat-label>Dni</mat-label>
-                  <input matInput formControlName="dni" required />
-                  <mat-error *ngIf="formulario.get('dni')?.invalid" >Campo requerido</mat-error>
-                </mat-form-field>
+            <div fxFlex="80" fxFlex.sm="50 " fxLayoutGap="40px">
+              <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
+                <mat-label>Dni</mat-label>
+                <input matInput formControlName="dni" required />
+                <mat-error *ngIf="formulario.get('dni')?.invalid"
+                  >Campo requerido</mat-error
+                >
+              </mat-form-field>
 
-                <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
-                  <mat-label>Nombre</mat-label>
-                  <!-- <input matInput placeholder="Ex. Pizza" > -->
-                  <input matInput formControlName="name" required>
-                  <mat-error *ngIf="formulario.get('name')?.invalid" >Campo requerido</mat-error>
-                </mat-form-field>
-              </div>
-              <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="10px">
-                <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
-                  <mat-label>Apellido</mat-label>
-                  <input matInput formControlName="lastname" required >
-                  <mat-error *ngIf="formulario.get('lastname')?.invalid" >Campo requerido</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
-                  <mat-label>Correo</mat-label>
-                  <input matInput formControlName="email" required>
-                  <mat-error *ngIf="formulario.get('email')?.invalid" >Campo requerido</mat-error>
-                </mat-form-field>
-              </div>
-              <div fxFlex="100" fxFlex.sm="50" fxLayoutGap="10">
-                <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
-                  <mat-label>Contraseña</mat-label>
-                  <!-- <input matInput placeholder="Ex. Pizza" > -->
-                  <input matInput formControlName="password" required>
-                </mat-form-field>
-                <mat-form-field fxFlex="100" class="flex-p" appearance="outline">
-                  <mat-label>Confirmar contraseña</mat-label>
-                  <!-- <input matInput placeholder="Ex. Pizza" > -->
-                  <input matInput formControlName="confiPassword" required >
-                </mat-form-field>
-              </div>
-
-          </div>
-            <!-- <button mat-raised-button color="primary" type="submit">Login</button> -->
-            <div>
-
-              <div *ngIf="incorrectForm" style="color: red;"> {{msgError}} </div>
-              <!-- <mat-error *ngIf="incorrectForm">{{msgError}}</mat-error> -->
-              <loading-btn [loading]=showProgressBar text="Registrarse"> </loading-btn>
+              <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <!-- <input matInput placeholder="Ex. Pizza" > -->
+                <input matInput formControlName="name" required />
+                <mat-error *ngIf="formulario.get('name')?.invalid"
+                  >Campo requerido</mat-error
+                >
+              </mat-form-field>
             </div>
-
-          </mat-card-content>
-        </div>
-      </mat-card>
-    </form>
-  </div>
+            <div fxFlex="80" fxFlex.sm="50 " fxLayoutGap="40px">
+              <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input matInput formControlName="lastname" required />
+                <mat-error *ngIf="formulario.get('lastname')?.invalid"
+                  >Campo requerido</mat-error
+                >
+              </mat-form-field>
+              <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="email" required />
+                <mat-error *ngIf="formulario.get('email')?.invalid"
+                  >Campo requerido</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div fxFlex="80" fxFlex.sm="50" fxLayoutGap="40">
+              <mat-form-field fxFlex="50" class="flex-p" appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <!-- <input matInput placeholder="Ex. Pizza" > -->
+                <input matInput formControlName="password" required />
+              </mat-form-field>
+              <mat-form-field fxFlex="100" class="flex-p" appearance="outline">
+                <mat-label>Confirmar contraseña</mat-label>
+                <!-- <input matInput placeholder="Ex. Pizza" > -->
+                <input matInput formControlName="confiPassword" required />
+              </mat-form-field>
+            </div>
+          </div>
+          <!-- <button mat-raised-button color="primary" type="submit">Login</button> -->
+          <div>
+            <div *ngIf="incorrectForm" style="color: red">{{ msgError }}</div>
+            <!-- <mat-error *ngIf="incorrectForm">{{msgError}}</mat-error> -->
+            <loading-btn [loading]="showProgressBar" text="Registrarse">
+            </loading-btn>
+            <button mat-button routerLink="/login"  color="primary" style="margin-left: 2rem;" >
+              Cancelar
+           </button>
+          </div>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </form>
 </div>

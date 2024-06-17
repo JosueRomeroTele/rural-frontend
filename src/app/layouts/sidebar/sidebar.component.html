@@ -1,29 +1,38 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened class="side-drawer">
+<mat-sidenav-container class="example-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [fixedInViewport]="false"
+    opened
+    class="left-sidenav"
+  >
     <mat-nav-list>
-      <a mat-list-item routerLink="" class="list-item">
-        <mat-icon>home</mat-icon>
-        <span>Home</span>
-      </a>
-      <a mat-list-item routerLink="/usuarios" class="list-item">
-        <mat-icon>person </mat-icon>
-        <span>Usuario</span>
-      </a>
-      <a mat-list-item routerLink="/dispositivo" class="list-item">
-        <mat-icon>devices</mat-icon>
-        <span>Dispositivo</span>
-      </a>
-    </mat-nav-list>
-  </mat-drawer>
-
-  <mat-drawer-content>
-    <div class="main-content">
-      <div class="page-content">
-        <div class="container-fluid">
-          <!-- content -->
-          <router-outlet></router-outlet>
+      <mat-list-item routerLink="">
+        <div class="centered-content">
+          <mat-icon matListIcon>home</mat-icon>
+          <a matLine>Home</a>
         </div>
-      </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/usuarios">
+        <div class="centered-content">
+          <mat-icon matListIcon>person</mat-icon>
+          <a matLine>Usuario</a>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/dispositivo">
+        <div class="centered-content">
+          <mat-icon matListIcon>group_work</mat-icon>
+          <a matLine>Devices</a>
+        </div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content fixedInViewport="false">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
     </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>

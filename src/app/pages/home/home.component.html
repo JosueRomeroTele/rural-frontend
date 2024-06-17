@@ -1,1 +1,79 @@
-<p>home works!</p>
+<app-pagetitle title="Home"></app-pagetitle>
+
+<div fxLayout="column">
+  <div fxFlex="100" fxLayoutGap="40px">
+    <div fxFlex="25">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Usuarios </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div fxFlex="70">
+            Total de usuarios : 30
+          </div>
+          <div fxFlex="30" class="stats">
+            <mat-icon >person</mat-icon>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="25">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Dispositivos </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div fxFlex="70">
+            Total de Dispositivos : 30
+          </div>
+          <div fxFlex="30" class="stats">
+            <mat-icon >warning</mat-icon>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div fxFlex="25">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Ultimo dispostivo </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <div fxFlex="25">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Mediciones </mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+
+  <div fxFlex="100" class="content-dashboard">
+    <ngx-charts-line-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="true"
+    [results]="multi"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+    >
+  </ngx-charts-line-chart>
+  </div>
+
+
+</div>
+
+
