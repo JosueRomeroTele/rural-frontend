@@ -1,0 +1,11 @@
+.mat-dialog-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px; /* Ajusta esto según sea necesario */
+  margin: 0 auto;
+}
+
+.mat-form-field {
+  width: 100%;
+}

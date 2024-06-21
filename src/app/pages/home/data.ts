@@ -1,4 +1,3 @@
-import * as moment from 'moment';
 export var multi = [
   {
     "name": "Temperatura",

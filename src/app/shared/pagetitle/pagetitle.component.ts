@@ -18,6 +18,7 @@ export class PagetitleComponent implements OnInit {
   }>;
 
   @Input() title: string | undefined;
+  @Input() icon: string | undefined;
 
   constructor() { }
 

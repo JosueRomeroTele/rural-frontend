@@ -6,4 +6,5 @@ export interface Usuario {
   role: number;
   password?: string;
   token?: string;
+  enable?:boolean;
 }

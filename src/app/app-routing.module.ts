@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 import { AuthorizationGuard } from './guards/auth.guard';
+import { DevicesComponent } from './pages/devices/devices.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
     children:[
       {path: '', component: HomeComponent},
-      {path:'usuarios',component:UsuariosComponent}
+      {path:'usuarios',component:UsuariosComponent},
+      {path:'devices',component:DevicesComponent}
 
     ]
   },

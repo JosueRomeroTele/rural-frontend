@@ -1,7 +1,21 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/interfaces/dto/IUsuarioDto';
-import RoleUser from 'src/app/interfaces/enum/Roles';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditAddUsuarioComponent } from './edit-add-usuario/edit-add-usuario.component';
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: any[] = [
+  {dni: 7312, name: 'josue romero',lastname:'villalva', email: 'jc@romer.pe', role: 2,enable:true},
+  {dni: 11333, name: 'josue romero',lastname:'villalva', email: 'jc@romer.pe', role: 3,enable:false},
+
+];
 
 @Component({
   selector: 'app-usuarios',
@@ -10,12 +24,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UsuariosComponent {
 
+  displayedColumns: string[] = ['dni', 'name', 'email', 'role','habilate','edit/app'];
+  dataSource = ELEMENT_DATA;
+
+
   listUsuarios: Usuario[];
-  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
-  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-  originally bred for hunting.`;
+
   usuarioSesion: String|null;
-  constructor(private _userService: UserService) {
+  constructor(private _userService: UserService,public dialog:MatDialog) {
     this.listUsuarios =[]
     this.usuarioSesion = sessionStorage.getItem('id')
   }
@@ -25,8 +41,11 @@ export class UsuariosComponent {
     this._userService.listUser().subscribe(
       result=>{
         this.listUsuarios=result.data.filter((user:any)=>user.dni!==this.usuarioSesion)
+        // this.dataSource=this.listUsuarios
+        // this.dataSource=this.listUsuarios
       }
     );
+
   }
 
   getRoleName(role: number): string {
@@ -39,4 +58,12 @@ export class UsuariosComponent {
     return roleMap[role] || "SIN ROL";
   };
 
+  openDialogEdit(tipo:number,data?:Usuario,){
+    this.dialog.open(EditAddUsuarioComponent,{
+      data:{
+        usuario:data,
+        tipo:tipo
+      }
+    })
+  }
 }

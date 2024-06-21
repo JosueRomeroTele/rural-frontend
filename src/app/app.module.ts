@@ -8,8 +8,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 
 import { NgxChartsModule } from "@swimlane/ngx-charts";
-
-
+import {MatTableModule} from '@angular/material/table';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -40,6 +41,7 @@ import { ModalMensajeComponent } from './components/modal-mensaje/modal-mensaje.
 import { LoadingButtonComponent } from './components/loading-button/loading-button.component';
 import { DevicesComponent } from './pages/devices/devices.component';
 import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
+import { EditAddUsuarioComponent } from './pages/usuarios/edit-add-usuario/edit-add-usuario.component';
 @NgModule({
   declarations: [
     PagetitleComponent,
@@ -53,7 +55,8 @@ import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
     RegisterComponent,
     ModalMensajeComponent,
     LoadingButtonComponent,
-    DevicesComponent
+    DevicesComponent,
+    EditAddUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,10 @@ import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
     MatProgressSpinnerModule,
     MatMenuModule,
     CommonModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [
     AuthenticationService,

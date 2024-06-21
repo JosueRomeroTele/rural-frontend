@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>{{tipo == 1? 'Actualizar usuario':'Agregar usuario'}}</h1>
+<div mat-dialog-content style="width: 60vh;">
+  <form [formGroup]="formulario" (ngSubmit)="registrar()" autocomplete="off">
+    <div fxLayout="row" fxFlex="100" fxLayout="center center">
+      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="20px">
+        <mat-form-field fxFlex="40" appearance="outline" >
+          <mat-label>Dni</mat-label>
+          <input matInput formControlName="dni"  />
+          <!-- <mat-error *ngIf="formulario.get('dni')?.invalid"
+          >Campo requerido</mat-error
+        > -->
+        </mat-form-field>
+
+        <mat-form-field fxFlex="60" appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input matInput formControlName="email" required />
+          <!-- <mat-error *ngIf="formulario.get('name')?.invalid"
+          >Campo requerido</mat-error
+        > -->
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="40px">
+        <mat-form-field fxFlex="50" appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" />
+          <!-- <mat-error *ngIf="formulario.get('dni')?.invalid"
+          >Campo requerido</mat-error
+        > -->
+        </mat-form-field>
+
+        <mat-form-field fxFlex="50" appearance="outline">
+          <mat-label>Apellido</mat-label>
+          <input matInput formControlName="lastname" required />
+          <!-- <mat-error *ngIf="formulario.get('name')?.invalid"
+          >Campo requerido</mat-error
+        > -->
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="40px">
+        <mat-form-field fxFlex="50" appearance="outline">
+          <mat-label>Rol</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let role of roles" [value]="role.id">
+              {{ role.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div fxFlex="50" appearance="outline" fxLayout="center center">
+          <!-- {{(enable ? 'Habilitado':'Deshabilitado')}}  -->
+          <mat-slide-toggle formControlName="enable">  </mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <loading-btn [loading]="loading" [disabled]="!formulario.valid" text="{{tipo == 1? 'Actualizar':'Agregar'}}"></loading-btn>
+</div>
