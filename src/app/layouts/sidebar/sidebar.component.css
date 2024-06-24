@@ -1,8 +1,6 @@
 .example-container {
   width: 100%;
   height: 100vh;
-  /* margin: 10px; */
-  /* border: 1px solid #555; */
 }
 
 .left-sidenav{
@@ -10,7 +8,7 @@
   align-items: center;
   justify-content: center;
   width: 25vh;
-  background: #8388a5;
+  /* background: #8388a5; */
 }
 
 .example-container {
@@ -36,13 +34,39 @@
   margin-right: 8px;
 }
 
-.centered-content a {
-  display: flex;
-  align-items: center;
+.container-fluid{
+  margin: 2rem 3.5rem
 }
 
 
+.pin {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: currentColor;
+}
 
-.container-fluid{
-  margin: 2rem 3.5rem
+.sidenav-header {
+  padding: 0 8px !important;
+}
+
+.image{
+  width: 180px;
+  height: 64px;
+}
+
+
+.sidenav-header {
+  padding: 0 8px !important;
+}
+
+.pin {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: currentColor;
+}
+
+.content-nav-list{
+
 }

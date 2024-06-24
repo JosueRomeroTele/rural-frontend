@@ -28,6 +28,8 @@ export class LoginComponent {
     console.log(this.formulario.value)
     sessionStorage.setItem('token','gaaaaaaa')
     this.router.navigate(['/'])
+    sessionStorage.setItem('name','pedrito')
+    sessionStorage.setItem('lastname','sanvhezz')
     this.loading = true;
     this.loginService.login(this.formulario.value).pipe(
       finalize(() => this.loading = false)

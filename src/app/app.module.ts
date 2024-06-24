@@ -42,6 +42,8 @@ import { LoadingButtonComponent } from './components/loading-button/loading-butt
 import { DevicesComponent } from './pages/devices/devices.component';
 import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
 import { EditAddUsuarioComponent } from './pages/usuarios/edit-add-usuario/edit-add-usuario.component';
+import { FormDeviceComponent } from './pages/devices/form-device/form-device.component';
+import { DeviceDetailComponent } from './pages/devices/device-detail/device-detail.component';
 @NgModule({
   declarations: [
     PagetitleComponent,
@@ -56,7 +58,9 @@ import { EditAddUsuarioComponent } from './pages/usuarios/edit-add-usuario/edit-
     ModalMensajeComponent,
     LoadingButtonComponent,
     DevicesComponent,
-    EditAddUsuarioComponent
+    EditAddUsuarioComponent,
+    FormDeviceComponent,
+    DeviceDetailComponent
   ],
   imports: [
     BrowserModule,

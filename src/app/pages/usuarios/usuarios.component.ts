@@ -41,7 +41,7 @@ export class UsuariosComponent {
     this._userService.listUser().subscribe(
       result=>{
         this.listUsuarios=result.data.filter((user:any)=>user.dni!==this.usuarioSesion)
-        // this.dataSource=this.listUsuarios
+        this.dataSource=this.listUsuarios
         // this.dataSource=this.listUsuarios
       }
     );

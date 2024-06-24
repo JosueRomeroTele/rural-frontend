@@ -12,6 +12,8 @@ export class ToolbarComponent {
   constructor
   (private authService: AuthenticationService,private router:Router){}
 
+  nombre : string | null = sessionStorage.getItem('name')
+  apellido : string | null  = sessionStorage.getItem('lastname')
   cerrarSesion(){
     console.log('ciera o no')
     this.authService.borrarCredenciales()

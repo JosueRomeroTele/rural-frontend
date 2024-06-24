@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>
+  {{ tipo === 0 ? "Agregar dispositivio" : "Editar dispositivo" }}
+</h1>
+<div mat-dialog-content style="padding-top: 10px;width: 60vh;">
+  <form [formGroup]="deviceForm" fxLayout="column"  (ngSubmit)="registarDispositivo()">
+    <div fxLayout="row" fxFlex="100" fxLayoutGap="20">
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Nombre" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="50">
+        <mat-label>Nro Serie</mat-label>
+        <input matInput formControlName="serie" placeholder="Serie" />
+      </mat-form-field>
+    </div>
+
+    <div fxFlex="column" fxFlex="100">
+      <ng-container formArrayName="parametros">
+        <ng-container
+          *ngFor="let parameterForm of parametros.controls; let index = index"
+        >
+          <div [formGroupName]="index"  fxLayoutGap="20">
+            <mat-form-field appearance="outline" fxFlex="48">
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="nombre" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="35">
+              <mat-label>unidad</mat-label>
+              <mat-select formControlName="unidad">
+                <mat-option *ngFor="let unit of units" [value]="unit">{{ unit }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button type="button" mat-mini-fab (click)="deleteParametro(index)">
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <div fxFlex="row" fxLayoutAlign="center center">
+      <button type="button" mat-mini-fab (click)="addParametro()">
+        <mat-icon  >add</mat-icon>
+      </button>
+    </div>
+
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <loading-btn [loading]="loading"  [disabled]="!deviceForm.valid" text="{{ tipo === 0 ? 'Agregar dispositivio' : 'Editar dispositivo' }} "></loading-btn>
+
+</div>

@@ -1,11 +1,13 @@
-<h1 mat-dialog-title>{{tipo == 1? 'Actualizar usuario':'Agregar usuario'}}</h1>
-<div mat-dialog-content style="width: 60vh;">
-  <form [formGroup]="formulario" (ngSubmit)="registrar()" autocomplete="off">
+<form [formGroup]="formulario" class="mat-dialog-container" (ngSubmit)="registrar()" autocomplete="off" >
+  <h1 mat-dialog-title>
+    {{ tipo == 1 ? "Actualizar usuario" : "Agregar usuario" }}
+  </h1>
+  <div mat-dialog-content style="padding-top: 10px">
     <div fxLayout="row" fxFlex="100" fxLayout="center center">
       <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="20px">
-        <mat-form-field fxFlex="40" appearance="outline" >
+        <mat-form-field fxFlex="40" appearance="outline">
           <mat-label>Dni</mat-label>
-          <input matInput formControlName="dni"  />
+          <input matInput formControlName="dni" />
           <!-- <mat-error *ngIf="formulario.get('dni')?.invalid"
           >Campo requerido</mat-error
         > -->
@@ -19,7 +21,7 @@
         > -->
         </mat-form-field>
       </div>
-      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="40px">
+      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="20px">
         <mat-form-field fxFlex="50" appearance="outline">
           <mat-label>Nombre</mat-label>
           <input matInput formControlName="name" />
@@ -37,7 +39,7 @@
         </mat-form-field>
       </div>
 
-      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="40px">
+      <div fxFlex="100" fxFlex.sm="50 " fxLayoutGap="20px">
         <mat-form-field fxFlex="50" appearance="outline">
           <mat-label>Rol</mat-label>
           <mat-select formControlName="role">
@@ -49,13 +51,18 @@
 
         <div fxFlex="50" appearance="outline" fxLayout="center center">
           <!-- {{(enable ? 'Habilitado':'Deshabilitado')}}  -->
-          <mat-slide-toggle formControlName="enable">  </mat-slide-toggle>
+          <mat-slide-toggle formControlName="enable"> </mat-slide-toggle>
         </div>
       </div>
     </div>
-  </form>
-</div>
-<div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <loading-btn [loading]="loading" [disabled]="!formulario.valid" text="{{tipo == 1? 'Actualizar':'Agregar'}}"></loading-btn>
-</div>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <loading-btn
+      [loading]="loading"
+      [disabled]="!formulario.valid"
+      text="{{ tipo == 1 ? 'Actualizar' : 'Agregar' }}"
+      type="submit"
+    ></loading-btn>
+  </div>
+</form>
