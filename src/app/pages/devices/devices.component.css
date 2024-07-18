@@ -19,3 +19,6 @@
 .container-devices{
   padding-top: 3rem;
 }
+.mat-card-content{
+  margin-top: 1rem;
+}

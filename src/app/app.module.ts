@@ -6,11 +6,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import {MatTableModule} from '@angular/material/table';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -44,6 +51,12 @@ import { PagetitleComponent } from './shared/pagetitle/pagetitle.component';
 import { EditAddUsuarioComponent } from './pages/usuarios/edit-add-usuario/edit-add-usuario.component';
 import { FormDeviceComponent } from './pages/devices/form-device/form-device.component';
 import { DeviceDetailComponent } from './pages/devices/device-detail/device-detail.component';
+import { DragAndDropFileComponent } from './components/drag-and-drop-file/drag-and-drop-file.component';
+import { ModalUploadFileComponent } from './components/modal-upload-file/modal-upload-file.component';
+import { NotFoundComponent } from './account/not-found/not-found.component';
+import { ModalEliminarComponent } from './components/modal-eliminar/modal-eliminar.component';
+import { DashboardDeviceComponent } from './pages/devices/dashboard-device/dashboard-device.component';
+
 @NgModule({
   declarations: [
     PagetitleComponent,
@@ -60,7 +73,12 @@ import { DeviceDetailComponent } from './pages/devices/device-detail/device-deta
     DevicesComponent,
     EditAddUsuarioComponent,
     FormDeviceComponent,
-    DeviceDetailComponent
+    DeviceDetailComponent,
+    DragAndDropFileComponent,
+    ModalUploadFileComponent,
+    NotFoundComponent,
+    ModalEliminarComponent,
+    DashboardDeviceComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +105,12 @@ import { DeviceDetailComponent } from './pages/devices/device-detail/device-deta
     NgxChartsModule,
     MatTableModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatTooltipModule
   ],
   providers: [
     AuthenticationService,

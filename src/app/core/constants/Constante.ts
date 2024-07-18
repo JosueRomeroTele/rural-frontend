@@ -13,6 +13,8 @@ export class Constante{
     static CERRAR = 'Cerrar';
     //Mensaje OK
     static MENSAJE_OK = 'Operación realizada correctamente'
+    static MENSAJE_OK_ELIMINAR_USUARIO = 'Se ha eliminado el usuario correctamente.'
+
     //ARCHIVO DE MENSAJES
     static MESSAGE_ES_FILE = 'message.es.json';
     static MESSAGE_EN_FILE = 'message.en.json';
@@ -69,4 +71,9 @@ export class Constante{
 
 
     static RPT_EXITOSA = true
+
+    //TIPOS
+    static TIPO_ELIMINAR_USUARIO='eliminar_usuario'
+    static TIPO_ELIMINAR_DISPOSITIVO='eliminar_usuario'
+    static TIPO_ELIMINAR_DATA_DISPOSITIVO='eliminar_data_dispositivo'
 }

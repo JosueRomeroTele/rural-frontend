@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { distinct, finalize, last } from 'rxjs';
 import { Usuario } from 'src/app/interfaces/dto/IUsuarioDto';
 import { AuthenticationService } from 'src/app/services/security/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -21,15 +22,12 @@ export class LoginComponent {
   errorMsg: boolean = false;
   mensajeError: string = '';
   hide = true;
-  constructor(private loginService: AuthenticationService, private router: Router) { }
+  constructor(private loginService: AuthenticationService, private userService: UserService, private router: Router) { }
 
 
   login() {
     console.log(this.formulario.value)
-    sessionStorage.setItem('token','gaaaaaaa')
-    this.router.navigate(['/'])
-    sessionStorage.setItem('name','pedrito')
-    sessionStorage.setItem('lastname','sanvhezz')
+    // this.prueba()
     this.loading = true;
     this.loginService.login(this.formulario.value).pipe(
       finalize(() => this.loading = false)
@@ -38,16 +36,22 @@ export class LoginComponent {
       console.log('result: ', result)
       if (result.success) {
         const dni = this.formulario.value.dni
-        this.loginService.cargarCredenciales(result, dni == undefined ? '' : dni)
-        this.router.navigate(['/'])
+        this.obtenerUsuarioAndRoute(dni!)
       } else {
         this.loading = false;
-        // this.disableBtn=true;
-
         this.errorMsg = true;
-        this.mensajeError=result.msg;
-
+        this.mensajeError = result.msg;
         return
+      }
+    })
+  }
+
+
+  async obtenerUsuarioAndRoute(id: string): Promise<void> {
+    this.userService.obtenerDataUsuario(id).subscribe(result => {
+      if (result.success) {
+        this.loginService.cargarCredenciales(result.data, id)
+        this.router.navigate(['/'])
       }
     })
   }
@@ -67,5 +71,19 @@ export class LoginComponent {
         role: 3
       }
     }
+  }
+
+
+  prueba(){
+    sessionStorage.setItem('token','gaaaa')
+
+    sessionStorage.setItem('id',  '73124086')
+    sessionStorage.setItem('role', '2')
+    sessionStorage.setItem('name', 'josue')
+    sessionStorage.setItem('lastname', 'romero')
+    sessionStorage.setItem('token', 'gaaaaaa')
+    sessionStorage.setItem('enable','true')
+
+    this.router.navigate(['/'])
   }
 }

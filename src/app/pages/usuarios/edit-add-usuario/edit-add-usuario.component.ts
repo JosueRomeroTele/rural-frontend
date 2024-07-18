@@ -60,7 +60,7 @@ export class EditAddUsuarioComponent implements OnInit {
   registrar() {
     console.log('hla')
     console.log(this.formulario.value)
-    // Tu lógica para registrar o actualizar el usuario
+
   }
 
 }

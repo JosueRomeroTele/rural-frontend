@@ -72,7 +72,7 @@
           <th mat-header-cell *matHeaderCellDef>  </th>
           <td mat-cell *matCellDef="let element">
             <button mat-icon-button color="primary" (click)="openDialogEdit(1,element)"> <mat-icon>edit</mat-icon> </button>
-            <button mat-icon-button color="warn"> <mat-icon>delete</mat-icon> </button>
+            <button mat-icon-button color="warn" (click)="opendDialogDelete(element)"> <mat-icon>delete</mat-icon> </button>
           </td>
         </ng-container>
 

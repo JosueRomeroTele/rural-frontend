@@ -3,15 +3,15 @@ export var multi = [
     "name": "Temperatura",
     "series": [
       {
-        "name": "1718639487", //eje y
+        "name": "2024-06-28T19:25:56-05:00", //eje y
         "value": 78 // eje  x
       },
       {
-        "name": "1718639581" ,
+        "name": "2024-06-28T19:30:56-05:00" ,
         "value": 90
       },
       {
-        "name": "1718640379",
+        "name": "2024-06-28T19:40:56-05:00",
         "value": 95
       }
     ]
@@ -21,16 +21,16 @@ export var multi = [
     "name": "Humedad",
     "series": [
       {
-        "name": "1718639487", //eje y
-        "value": 45 // eje  x
+        "name": "2024-06-28T19:25:56-05:00", //eje y
+        "value": 40 // eje  x
       },
       {
-        "name": "1718639581" ,
-        "value": 30
-      },
-      {
-        "name": "1718640379",
+        "name": "2024-06-28T19:30:56-05:00" ,
         "value": 20
+      },
+      {
+        "name": "2024-06-28T19:40:56-05:00",
+        "value": 55
       }
     ]
   }

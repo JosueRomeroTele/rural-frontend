@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>
-  {{ tipo === 0 ? "Agregar dispositivio" : "Editar dispositivo" }}
+  {{ tipo === 0 ? "Agregar dispositivio" : "Editar dispositivo" }} <mat-icon>info</mat-icon>
 </h1>
 <div mat-dialog-content style="padding-top: 10px;width: 60vh;">
   <form [formGroup]="deviceForm" fxLayout="column"  (ngSubmit)="registarDispositivo()">
@@ -46,11 +46,10 @@
         <mat-icon  >add</mat-icon>
       </button>
     </div>
-
+    <div mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <loading-btn [loading]="loading"  [disabled]="!deviceForm.valid" text="{{ tipo === 0 ? 'Agregar dispositivio' : 'Editar dispositivo' }} "></loading-btn>
+    </div>
   </form>
 </div>
-<div mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancelar</button>
-  <loading-btn [loading]="loading"  [disabled]="!deviceForm.valid" text="{{ tipo === 0 ? 'Agregar dispositivio' : 'Editar dispositivo' }} "></loading-btn>
 
-</div>

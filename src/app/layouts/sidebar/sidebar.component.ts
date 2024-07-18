@@ -1,44 +1,11 @@
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { Component } from '@angular/core';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { Component, signal } from '@angular/core';
+import { Utilitario } from 'src/app/utils/Utilitario';
 
-
-/**
- * Food data with nested structure.
- * Each node has a name and an optional list of children.
- */
-interface FoodNode {
-  name: string;
-  children?: FoodNode[];
+export type MenuItem = {
+  icon:string;
+  label:string;
+  router:string
 }
-
-const TREE_DATA: FoodNode[] = [
-  {
-    name: 'Fruit',
-    children: [{name: 'Apple'}, {name: 'Banana'}, {name: 'Fruit loops'}],
-  },
-  {
-    name: 'Vegetables',
-    children: [
-      {
-        name: 'Green',
-        children: [{name: 'Broccoli'}, {name: 'Brussels sprouts'}],
-      },
-      {
-        name: 'Orange',
-        children: [{name: 'Pumpkins'}, {name: 'Carrots'}],
-      },
-    ],
-  },
-];
-
-/** Flat node with expandable and level information */
-interface ExampleFlatNode {
-  expandable: boolean;
-  name: string;
-  level: number;
-}
-
 
 @Component({
   selector: 'app-sidebar',
@@ -46,32 +13,18 @@ interface ExampleFlatNode {
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  private _transformer = (node: FoodNode, level: number) => {
-    return {
-      expandable: !!node.children && node.children.length > 0,
-      name: node.name,
-      level: level,
-    };
-  };
 
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level,
-    node => node.expandable,
-  );
+  nombre : string | null = sessionStorage.getItem('name')
+  apellido : string | null  = sessionStorage.getItem('lastname')
+  rol : string | null
 
-  treeFlattener = new MatTreeFlattener(
-    this._transformer,
-    node => node.level,
-    node => node.expandable,
-    node => node.children,
-  );
+  menuItems = signal<MenuItem[]>([
+    { icon: 'home', label: 'Home', router: '' },
+    { icon: 'group', label: 'Usuarios', router: '/usuarios' },
+    { icon: 'bluetooth_connected', label: 'Dispositivos', router: '/devices' },
+  ])
 
-  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-
-  constructor() {
-    this.dataSource.data = TREE_DATA;
+  constructor(){
+    this.rol = Utilitario.getRoleName(Number(sessionStorage.getItem('role')))
   }
-
-  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
-
 }

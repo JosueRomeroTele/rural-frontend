@@ -3,19 +3,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormDeviceComponent } from './form-device/form-device.component';
 import { Dispositivo } from 'src/app/interfaces/dto/IDispositivo';
 import { Route, Router } from '@angular/router';
+import { DeviceService } from 'src/app/services/device.service';
 
 
 const ELEMENT_DATA: any[] = [
-  {serie: 7312,
+  {id: 7312,
     nombre: 'DHR=2311',
     parametros:[{parametro:'temperatura',unidad:'fare'},{parametro:'humedad',unidad:'Co'}],
     parametrosProm: [{parametro:'temperatura',valor:80},{parametro:'humedad',valor: 78.2}],
     usuario: 'josue romero,73124086,3',
-    cantAlertas: 2,
+    cantAlertas: 0,
     description:'descripcion  del dispositivo'
   },
 
-  {serie: 7300212,
+  {id: 7300212,
     nombre: 'DHR=2311',
     parametros:[{parametro:'temperatura',unidad:'fare'},{parametro:'humedad',unidad:'Co'}],
     parametrosProm: [{parametro:'temperatura',valor:80},{parametro:'humedad',valor: 78.2}],
@@ -23,7 +24,7 @@ const ELEMENT_DATA: any[] = [
     cantAlertas: 2,
     description:'descripcion  del dispositivo'
   },
-  {serie: 9898989,
+  {id: 9898989,
     nombre: 'DHR=2311',
     parametros:[{parametro:'temperatura',unidad:'fare'},{parametro:'humedad',unidad:'Co'}],
     parametrosProm: [{parametro:'temperatura',valor:80},{parametro:'humedad',valor: 78.2}],
@@ -31,7 +32,7 @@ const ELEMENT_DATA: any[] = [
     cantAlertas: 2,
     description:'descripcion  del dispositivo'
   },
-  {serie: 11111,
+  {id: 11111,
     nombre: 'DHR=2311',
     parametros:[{parametro:'temperatura',unidad:'fare'},{parametro:'humedad',unidad:'Co'}],
     parametrosProm: [{parametro:'temperatura',valor:80},{parametro:'humedad',valor: 78.2}],
@@ -39,7 +40,7 @@ const ELEMENT_DATA: any[] = [
     cantAlertas: 2,
     description:'descripcion  del dispositivo'
   },
-  {serie: 3443322,
+  {id: 3443322,
     nombre: 'DHR=2311',
     parametros:[{parametro:'temperatura',unidad:'fare'},{parametro:'humedad',unidad:'Co'}],
     parametrosProm: [{parametro:'temperatura',valor:80},{parametro:'humedad',valor: 78.2}],
@@ -60,7 +61,7 @@ export class DevicesComponent implements OnInit {
 
   listaDispositivos = ELEMENT_DATA;
   listDevices: Dispositivo[]=[];
-  constructor(public dialog: MatDialog, private router:Router){
+  constructor(public dialog: MatDialog, private router:Router,private deviceService: DeviceService){
 
   }
 
@@ -78,6 +79,9 @@ export class DevicesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.deviceService.listDevices().subscribe(result=>{
+      console.log(result)
+      this.listaDispositivos = result.data
+    })
   }
 }

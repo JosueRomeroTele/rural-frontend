@@ -18,7 +18,14 @@ export class UserService {
     return this.userService.list(this.endPoint+'/list',{
       headers : new Headers({
         'Content-Type': 'application/json; charset=utf-8',
+      })
+    })
+   }
 
+   public obtenerDataUsuario(id:string){
+    return this.userService.getData(this.endPoint+'/'+id,{
+      headers: new Headers({
+        'Content-Type': 'application/json; charset=utf-8',
       })
     })
    }

@@ -16,8 +16,7 @@ export class AuthenticationService {
   public login(data:any):Observable<any>{
     return this.authApiService.login('login',data,{
       headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-        'auth-type': 'servicio'
+        'Content-Type': 'application/json; charset=utf-8'
       })
     })
   }
@@ -33,9 +32,11 @@ export class AuthenticationService {
 
 
   public cargarCredenciales(response:any,id:string){
+    console.log('data para credenciales : ',response)
     sessionStorage.setItem('id',  id)
     sessionStorage.setItem('role', response == undefined ? '' : response.role)
-    sessionStorage.setItem('name', response == undefined ? '' : response.user)
+    sessionStorage.setItem('name', response == undefined ? '' : response.name)
+    sessionStorage.setItem('lastname', response == undefined ? '' : response.lastname)
     sessionStorage.setItem('token', response == undefined ? '' : response.token)
     sessionStorage.setItem('enable', response == undefined ? '' : response.enable)
   }

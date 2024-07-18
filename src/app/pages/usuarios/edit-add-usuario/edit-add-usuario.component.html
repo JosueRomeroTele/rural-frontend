@@ -1,4 +1,4 @@
-<form [formGroup]="formulario" class="mat-dialog-container" (ngSubmit)="registrar()" autocomplete="off" >
+<form class="mat-dialog-container" [formGroup]="formulario" (ngSubmit)="registrar()" autocomplete="off" >
   <h1 mat-dialog-title>
     {{ tipo == 1 ? "Actualizar usuario" : "Agregar usuario" }}
   </h1>
@@ -49,10 +49,21 @@
           </mat-select>
         </mat-form-field>
 
-        <div fxFlex="50" appearance="outline" fxLayout="center center">
+        <!-- <div fxFlex="50" appearance="outline" fxLayout="center center"> -->
           <!-- {{(enable ? 'Habilitado':'Deshabilitado')}}  -->
-          <mat-slide-toggle formControlName="enable"> </mat-slide-toggle>
-        </div>
+          <!-- <mat-slide-toggle formControlName="enable"> </mat-slide-toggle>d -->
+          <mat-form-field fxFlex="50" appearance="outline">
+            <mat-label>Rol</mat-label>
+            <mat-select formControlName="enable">
+              <mat-option [value]="true">
+                Habilitar
+              </mat-option>
+              <mat-option [value]="false">
+                Inhabilitar
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -62,7 +73,6 @@
       [loading]="loading"
       [disabled]="!formulario.valid"
       text="{{ tipo == 1 ? 'Actualizar' : 'Agregar' }}"
-      type="submit"
     ></loading-btn>
   </div>
 </form>

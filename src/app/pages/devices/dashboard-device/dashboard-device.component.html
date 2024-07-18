@@ -1,0 +1,82 @@
+<div fxLayout="row" fxLayoutAlign="center start" fxFlex="100" class="content-dashboard">
+
+  <div fxFlex="80">
+    <ngx-charts-line-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [xAxisLabel]="'Fecha'"
+    [yAxisLabel]="'Parametros'"
+    [timeline]="true"
+    [results]="chartData"
+
+    >
+  </ngx-charts-line-chart>
+      <!-- (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)" -->
+  </div>
+
+
+  <div fxFlex="20">
+    <mat-card fxFlex="100">
+      <mat-card-content>
+
+        <form action="" [formGroup]="formParameters" (ngSubmit)="obtenerRangoMediciones(formParameters.value)" >
+
+          <div fxFlex="colum">
+            <h2>Parametros de medición</h2>
+            <div>
+              <mat-form-field>
+                <mat-label>Tiempo de medición</mat-label>
+                <mat-select formControlName="type"  (selectionChange)="onSelectionChange($event)" >
+                  <mat-option *ngFor="let opcion of parametrosTiempo" [value]="opcion.value">{{opcion.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="selectedOption===0">
+              <mat-form-field>
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="start" placeholder="Start date">
+                  <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="formParameters.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="formParameters.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field>
+                <mat-label>Parametros</mat-label>
+
+                <mat-select formControlName="parametros"  #select  multiple>
+                  <div class="select-all">
+                    <mat-checkbox [(ngModel)]="allSelected"
+                                    [ngModelOptions]="{standalone: true}"
+                                    (change)="toggleAllSelection()">Todos</mat-checkbox>
+                </div>
+                  <mat-option (click)="optionClick()" *ngFor="let opcion of device.tiposParametros" [value]="opcion.nombre">{{opcion.nombre}} - {{opcion.unidad}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <button mat-raised-button color="primary" type="submit"> Buscar</button>
+            </div>
+          </div>
+        </form>
+
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

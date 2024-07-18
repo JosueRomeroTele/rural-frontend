@@ -17,4 +17,9 @@ export class ModalMensajeComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+
+  aceptar():void{
+
+  }
 }

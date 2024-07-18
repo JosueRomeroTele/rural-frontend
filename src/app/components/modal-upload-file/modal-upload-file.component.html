@@ -1,0 +1,12 @@
+<form action="">
+
+  <h1 mat-dialog-title style="margin-bottom: 5px;">Importar data</h1>
+  <hr>
+  <div mat-dialog-content>
+    <h2>Subir Archivo CSV</h2>
+  <form (submit)="onSubmit($event)">
+    <input type="file" (change)="onFileSelected($event)" />
+    <button type="submit">Subir</button>
+  </form>
+  </div>
+</form>

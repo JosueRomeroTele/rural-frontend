@@ -1,5 +1,6 @@
 export interface IResponseData {
   success: boolean;
   msg:string;
-  data:any
+  data:any;
+  totalData?:number;
 }

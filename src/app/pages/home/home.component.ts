@@ -73,11 +73,11 @@ export class HomeComponent {
     const result = dataRaw.map((item) => {
       // Asegurarse de que el item es un objeto con las propiedades 'name' y 'value'
       if (typeof item === 'object' && item.name && item.value) {
-
+        // "2024-06-28T19:25:56-05:00"
         console.log(item.name)
-        console.log(moment.tz(item.name * 1000, 'America/Lima').toDate())
+        console.log(moment.tz(item.name , 'America/Lima').toDate())
         return {
-          name: moment.tz(item.name * 1000, 'America/Lima').toDate(),
+          name: moment.tz(item.name, 'America/Lima').toDate(),
           value: item.value
         };
       } else {

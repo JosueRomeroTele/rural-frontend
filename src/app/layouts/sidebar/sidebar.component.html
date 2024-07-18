@@ -6,13 +6,24 @@
     opened
     class="left-sidenav"
   >
-
+    <div class="sidenav-header">
+      <img width="100" height="100" src="/assets/img/profile.jpg"/>
+      <div class="header-text">
+        <h2>{{nombre + ' ' + apellido}} </h2>
+        <p>Rol - {{rol}}</p>
+      </div>
+    </div>
     <mat-nav-list >
-
-      <mat-list-item routerLink="">
+      <a mat-list-item *ngFor="let item of menuItems()" [routerLink]="item.router">
+        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+        <span>{{item.label}}</span>
+      </a>
+  <!-- <mat-list-item routerLink="">
         <div class="centered-content">
-          <mat-icon matListIcon>home</mat-icon>
-          <a matLine>Home</a>
+          <a mat-list-item>
+            <mat-icon matListIcon>home</mat-icon>
+          <span matLine>Home</span>
+          </a>
         </div>
       </mat-list-item>
 
@@ -29,6 +40,7 @@
           <a matLine>Dispositivos</a>
         </div>
       </mat-list-item>
+     -->
     </mat-nav-list>
   </mat-sidenav>
 

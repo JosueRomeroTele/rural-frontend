@@ -1,4 +1,5 @@
 export interface DataIot{
   nombre:string;
-  unidad:string
+  unidad:string;
+  tipo:string;
 }

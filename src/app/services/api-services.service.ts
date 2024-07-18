@@ -21,6 +21,23 @@ export class ApiServicesService {
     );
    }
 
+   getData(path:string,httpOptions:object):Observable<IResponseData>{
+    return this.http.get<IResponseData>(
+      `${this.domain}/${path}`, httpOptions
+    );
+   }
+
+   getItems(path:string,data:any,httpOptions:object):Observable<IResponseData>{
+    return this.http.post<IResponseData>(
+      `${this.domain}/${path}`,data,httpOptions
+    )
+   }
+
+   uploadData(path:string,data:any,httpOptions:object){
+    return this.http.post<IResponseData>(
+      `${this.domain}/${path}`,data,httpOptions
+    )
+   }
 
 
 }
